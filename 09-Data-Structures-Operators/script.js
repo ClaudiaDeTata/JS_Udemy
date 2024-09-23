@@ -161,7 +161,7 @@ console.log(fiveStarRatings, oneStarRatings, threeStarRatings);
 const books1 = [
   {
     title: 'IT',
-    author: 'Stephen King',
+    author: ['Stephen King', 'Kevin Wayne'],
     ISBN: 158785,
 
     thirdParty: {
@@ -315,3 +315,29 @@ add(...xs);
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
+
+//3.1
+const bookAuthors = [...books1[0].author, ...books1[1].author];
+console.log(bookAuthors);
+
+//3.2
+function spellWord(word) {
+  console.log(...word);
+}
+
+spellWord('JavaScript');
+
+//4.1
+// const [mainKeyword, ...rest] = books[0].keyword;
+// console.log(mainKeyword, rest);
+
+//4.2
+const { publisher: bookPublisher, ...restOfTheBook } = books1[1];
+console.log(bookPublisher, restOfTheBook);
+
+//4.3
+function printBookAuthorsCount(title, ...authors) {
+  console.log(`The book ${title} has ${authors.length} authors`);
+}
+
+printBookAuthorsCount(books1[0].title, ...books1[0].author);
