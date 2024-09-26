@@ -341,3 +341,41 @@ function printBookAuthorsCount(title, ...authors) {
 }
 
 printBookAuthorsCount(books1[0].title, ...books1[0].author);
+
+// Short-circuiting
+console.log(3 || 'Claudia'); // if first operand is a truthy value, the second operand will not be evaluated = print 3
+console.log('' || 'Claudia'); // print Claudia as an empty string is falsy = absence of meaningful data
+console.log(true || 0); // print true
+console.log(undefined || null); // print null as undefined is falsy value
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // print hello as it is the first truthy value
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('----- AND -----');
+
+console.log(0 && 'Claudia'); // print 0
+console.log(7 && 'Claudia'); // print 'Claudia' as it is the last value and the first is fals, with && we look for a strict equality
+
+console.log('Hello' && 23 && null && 'Claudia'); // print null
+
+// practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// nullish coalescing op
+// restaurant.numGuests = 0;
+const guests = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests);
+
+// nullish null and undefined
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
